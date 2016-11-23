@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMyContactsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMyContactsLabel_contactId}" for="contactId" />
+                    <h:inputText id="contactId" value="#{myContactsController.selected.contactId}" title="#{bundle.EditMyContactsTitle_contactId}" required="true" requiredMessage="#{bundle.EditMyContactsRequiredMessage_contactId}"/>
+                    <h:outputLabel value="#{bundle.EditMyContactsLabel_lastName}" for="lastName" />
+                    <h:inputText id="lastName" value="#{myContactsController.selected.lastName}" title="#{bundle.EditMyContactsTitle_lastName}" />
+                    <h:outputLabel value="#{bundle.EditMyContactsLabel_firstName}" for="firstName" />
+                    <h:inputText id="firstName" value="#{myContactsController.selected.firstName}" title="#{bundle.EditMyContactsTitle_firstName}" />
+                    <h:outputLabel value="#{bundle.EditMyContactsLabel_phone}" for="phone" />
+                    <h:inputText id="phone" value="#{myContactsController.selected.phone}" title="#{bundle.EditMyContactsTitle_phone}" />
+                    <h:outputLabel value="#{bundle.EditMyContactsLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{myContactsController.selected.email}" title="#{bundle.EditMyContactsTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditMyContactsLabel_gender}" for="gender" />
+                    <h:inputText id="gender" value="#{myContactsController.selected.gender}" title="#{bundle.EditMyContactsTitle_gender}" />
+                    <h:outputLabel value="#{bundle.EditMyContactsLabel_birthday}" for="birthday" />
+                    <h:inputText id="birthday" value="#{myContactsController.selected.birthday}" title="#{bundle.EditMyContactsTitle_birthday}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditMyContactsLabel_profId}" for="profId" />
+                    <h:selectOneMenu id="profId" value="#{myContactsController.selected.profId}" title="#{bundle.EditMyContactsTitle_profId}" >
+                        <f:selectItems value="#{professionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditMyContactsLabel_statusId}" for="statusId" />
+                    <h:selectOneMenu id="statusId" value="#{myContactsController.selected.statusId}" title="#{bundle.EditMyContactsTitle_statusId}" >
+                        <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditMyContactsLabel_zipCode}" for="zipCode" />
+                    <h:selectOneMenu id="zipCode" value="#{myContactsController.selected.zipCode}" title="#{bundle.EditMyContactsTitle_zipCode}" >
+                        <f:selectItems value="#{zipCodeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{myContactsController.update}" value="#{bundle.EditMyContactsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMyContactsViewLink}"/>
+                <br />
+                <h:commandLink action="#{myContactsController.prepareList}" value="#{bundle.EditMyContactsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMyContactsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

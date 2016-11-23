@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMyContactsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMyContactsLabel_contactId}"/>
+                    <h:outputText value="#{myContactsController.selected.contactId}" title="#{bundle.ViewMyContactsTitle_contactId}"/>
+                    <h:outputText value="#{bundle.ViewMyContactsLabel_lastName}"/>
+                    <h:outputText value="#{myContactsController.selected.lastName}" title="#{bundle.ViewMyContactsTitle_lastName}"/>
+                    <h:outputText value="#{bundle.ViewMyContactsLabel_firstName}"/>
+                    <h:outputText value="#{myContactsController.selected.firstName}" title="#{bundle.ViewMyContactsTitle_firstName}"/>
+                    <h:outputText value="#{bundle.ViewMyContactsLabel_phone}"/>
+                    <h:outputText value="#{myContactsController.selected.phone}" title="#{bundle.ViewMyContactsTitle_phone}"/>
+                    <h:outputText value="#{bundle.ViewMyContactsLabel_email}"/>
+                    <h:outputText value="#{myContactsController.selected.email}" title="#{bundle.ViewMyContactsTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewMyContactsLabel_gender}"/>
+                    <h:outputText value="#{myContactsController.selected.gender}" title="#{bundle.ViewMyContactsTitle_gender}"/>
+                    <h:outputText value="#{bundle.ViewMyContactsLabel_birthday}"/>
+                    <h:outputText value="#{myContactsController.selected.birthday}" title="#{bundle.ViewMyContactsTitle_birthday}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewMyContactsLabel_profId}"/>
+                    <h:outputText value="#{myContactsController.selected.profId}" title="#{bundle.ViewMyContactsTitle_profId}"/>
+                    <h:outputText value="#{bundle.ViewMyContactsLabel_statusId}"/>
+                    <h:outputText value="#{myContactsController.selected.statusId}" title="#{bundle.ViewMyContactsTitle_statusId}"/>
+                    <h:outputText value="#{bundle.ViewMyContactsLabel_zipCode}"/>
+                    <h:outputText value="#{myContactsController.selected.zipCode}" title="#{bundle.ViewMyContactsTitle_zipCode}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{myContactsController.destroyAndView}" value="#{bundle.ViewMyContactsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMyContactsEditLink}"/>
+                <br />
+                <h:commandLink action="#{myContactsController.prepareCreate}" value="#{bundle.ViewMyContactsCreateLink}" />
+                <br />
+                <h:commandLink action="#{myContactsController.prepareList}" value="#{bundle.ViewMyContactsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMyContactsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
